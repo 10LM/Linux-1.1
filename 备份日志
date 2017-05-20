@@ -1,0 +1,4 @@
+sudo service rsyslog start  #备份日志到指定位置，备份当天的日志并删除之前的日志。而且备份之后文件名是年-月-日的格式。alternatives.log在/var/log/下面。
+sudo cron -f &  #为shiyanlou用户添加计划任务每天凌晨3点的时候定时备份alternatives.log到/home/shiyanlou/tmp/目录命名格式为年-月-日，比如今天是2017年4月1日，那么文件名为2017-04-01
+crontab -e #设置定时执行
+0 3 * * * cp /var/log/alternatives.log /home/shiyanlou/tmp/$(date +\%Y-\%m-\%d)
